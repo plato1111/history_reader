@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Respuesta</title>
+</head>
+<body>
+    <h1>Respuesta generada por la API de Anthropic</h1>
+    <ul>
+        {% for linea in respuesta.splitlines() %}
+            {% if linea.startswith(('1.', '2.', '3.', '4.', '5.')) %}
+                <li>{{ linea }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
