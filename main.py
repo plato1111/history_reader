@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import anthropic
 import json
 import logging
+import os
 
 
 app = Flask(__name__)
@@ -45,7 +46,9 @@ def obtener_respuesta():
         mensaje_titulos += f"- {titulo}\n"
     
     client = anthropic.Anthropic(
-        api_key="KEY",
+        #api_key="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",
+        api_key=os.environ.get("ANTHROPIC_API_KEY"),
+
     )
     message = client.messages.create(
         model="claude-3-haiku-20240307",
@@ -73,6 +76,6 @@ def obtener_respuesta():
 
 
 if __name__ == '__main__':
-    print("La aplicación Flask se está ejecutando en http://localhost:5000")
-    app.run(debug=True)
+    print("La aplicación Flask se está ejecutando en http://localhost:8080")
+    app.run(debug=True, port=8080)
 
